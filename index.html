@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <h1>Page 1</h1>
+        <form id="myForm">
+            <input type="text" name="stuff" id="stuff"/>
+            <button type="submit" id="redirect">Click to go to Page 2</button>
+        </form>
+        <script>
+            form = document.querySelector('#myForm');
+            form.addEventListener('submit', function (e) {
+                e.preventDefault();
+                myInput = document.querySelector('#stuff');
+                window.location.href = `./page2?artistId=${myInput.value}`;
+            });
+        </script>
+    </body>
+</html>
+<!-- 1966143 -->

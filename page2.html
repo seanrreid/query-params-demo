@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <h1>Page 2</h1>
+        <script>
+            function get(url) {
+                return fetch(url, {
+                    method: 'GET',
+                    headers: {
+                        'User-Agent': 'SeanIsRad/3.0',
+                    },
+                })
+                    .then(function (response) {
+                        return response.json();
+                    })
+                    .then(function (data) {
+                        return data;
+                    });
+            }
+            let queryString = window.location.search;
+            const parameters = new URLSearchParams(queryString);
+            const artistId = parameters.get('artistId');
+
+            get(`https://api.discogs.com/artists/${artistId}`).then(function (
+                data
+            ) {
+                // Destructure our data
+                const { name, releases_url } = data;
+                // Call it back
+                console.log(name)
+            });
+        </script>
+    </body>
+</html>
